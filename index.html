@@ -97,6 +97,13 @@
     .tooltip.show {
         opacity: 1;
     }
+    .addon-card {
+        background-color: #21262d;
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 10px;
+        border: 1px solid #30363d;
+    }
     footer {
         text-align: center;
         padding: 20px;
@@ -138,12 +145,40 @@
     <div class="card">
         <h2>Add-ons</h2>
         <p>Optional lists: Annoyances, Security, Social filters, etc.</p>
-        <div class="copy-box">
-            <input type="text" class="copy-input" id="addonsUrl" value="https://yourusername.github.io/ZeroAds-Addons.txt" readonly>
-            <button class="copy-button" onclick="copyToClipboard('addonsUrl', this)">Copy URL
-                <span class="tooltip">Copied!</span>
-            </button>
+        
+        <!-- Demo Add-on 1 -->
+        <div class="addon-card">
+            <p>Annoyance Blocker (Demo)</p>
+            <div class="copy-box">
+                <input type="text" class="copy-input" id="addon1Url" value="https://yourusername.github.io/ZeroAds-Addon-Annoyance.txt" readonly>
+                <button class="copy-button" onclick="copyToClipboard('addon1Url', this)">Copy URL
+                    <span class="tooltip">Copied!</span>
+                </button>
+            </div>
         </div>
+
+        <!-- Demo Add-on 2 -->
+        <div class="addon-card">
+            <p>Social Filters (Demo)</p>
+            <div class="copy-box">
+                <input type="text" class="copy-input" id="addon2Url" value="https://yourusername.github.io/ZeroAds-Addon-Social.txt" readonly>
+                <button class="copy-button" onclick="copyToClipboard('addon2Url', this)">Copy URL
+                    <span class="tooltip">Copied!</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Demo Add-on 3 -->
+        <div class="addon-card">
+            <p>Security & Privacy (Demo)</p>
+            <div class="copy-box">
+                <input type="text" class="copy-input" id="addon3Url" value="https://yourusername.github.io/ZeroAds-Addon-Security.txt" readonly>
+                <button class="copy-button" onclick="copyToClipboard('addon3Url', this)">Copy URL
+                    <span class="tooltip">Copied!</span>
+                </button>
+            </div>
+        </div>
+        
     </div>
 </main>
 
