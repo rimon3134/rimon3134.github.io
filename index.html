@@ -38,6 +38,7 @@
         border-radius: 12px;
         border: 1px solid #30363d;
         transition: 0.3s;
+        position: relative;
     }
     .card:hover {
         border-color: #58a6ff;
@@ -52,6 +53,7 @@
     .copy-box {
         display: flex;
         margin-top: 10px;
+        position: relative;
     }
     .copy-input {
         flex: 1;
@@ -73,10 +75,27 @@
         font-weight: bold;
         cursor: pointer;
         transition: 0.2s;
+        position: relative;
     }
     .copy-button:hover {
         background-color: #58a6ff;
         color: #0d1117;
+    }
+    .tooltip {
+        position: absolute;
+        top: -30px;
+        right: 0;
+        background-color: #21262d;
+        color: #9be9a8;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 0.9em;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+    .tooltip.show {
+        opacity: 1;
     }
     footer {
         text-align: center;
@@ -99,7 +118,9 @@
         <p>Essential blocking — fast, minimal, and reliable.</p>
         <div class="copy-box">
             <input type="text" class="copy-input" id="coreUrl" value="https://yourusername.github.io/ZeroAds-Core.txt" readonly>
-            <button class="copy-button" onclick="copyToClipboard('coreUrl')">Copy URL</button>
+            <button class="copy-button" onclick="copyToClipboard('coreUrl', this)">Copy URL
+                <span class="tooltip">Copied!</span>
+            </button>
         </div>
     </div>
 
@@ -108,7 +129,9 @@
         <p>Core + enhanced filters for advanced protection.</p>
         <div class="copy-box">
             <input type="text" class="copy-input" id="fullUrl" value="https://yourusername.github.io/ZeroAds-Full.txt" readonly>
-            <button class="copy-button" onclick="copyToClipboard('fullUrl')">Copy URL</button>
+            <button class="copy-button" onclick="copyToClipboard('fullUrl', this)">Copy URL
+                <span class="tooltip">Copied!</span>
+            </button>
         </div>
     </div>
 
@@ -117,7 +140,9 @@
         <p>Optional lists: Annoyances, Security, Social filters, etc.</p>
         <div class="copy-box">
             <input type="text" class="copy-input" id="addonsUrl" value="https://yourusername.github.io/ZeroAds-Addons.txt" readonly>
-            <button class="copy-button" onclick="copyToClipboard('addonsUrl')">Copy URL</button>
+            <button class="copy-button" onclick="copyToClipboard('addonsUrl', this)">Copy URL
+                <span class="tooltip">Copied!</span>
+            </button>
         </div>
     </div>
 </main>
@@ -127,12 +152,16 @@
 </footer>
 
 <script>
-function copyToClipboard(id) {
-    var copyText = document.getElementById(id);
+function copyToClipboard(inputId, btn) {
+    var copyText = document.getElementById(inputId);
     copyText.select();
     copyText.setSelectionRange(0, 99999); // For mobile devices
     document.execCommand("copy");
-    alert("URL copied to clipboard!");
+
+    // Show tooltip
+    var tooltip = btn.querySelector('.tooltip');
+    tooltip.classList.add('show');
+    setTimeout(() => tooltip.classList.remove('show'), 1500);
 }
 </script>
 
