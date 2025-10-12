@@ -32,28 +32,43 @@
         margin: auto;
     }
     .card {
-        background-color: #161b22;
         padding: 20px;
         margin-bottom: 20px;
         border-radius: 12px;
         border: 1px solid #30363d;
-        transition: 0.3s;
+        transition: transform 0.2s, box-shadow 0.2s;
         position: relative;
     }
     .card:hover {
-        border-color: #58a6ff;
+        transform: scale(1.02);
+        box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
     }
     .card h2 {
-        color: #79c0ff;
         margin-top: 0;
     }
     .card p {
         color: #8b949e;
     }
+    .core { background-color: #161b22; border-left: 6px solid #58a6ff; }
+    .full { background-color: #161b22; border-left: 6px solid #c084fc; }
+    .addons { background-color: #161b22; border-left: 6px solid #56d364; }
+    .addon-card { 
+        background-color: #21262d;
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 10px;
+        border-left: 4px solid #56d364;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .addon-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 10px rgba(86, 211, 100, 0.3);
+    }
     .copy-box {
         display: flex;
         margin-top: 10px;
         position: relative;
+        flex-wrap: wrap;
     }
     .copy-input {
         flex: 1;
@@ -97,18 +112,16 @@
     .tooltip.show {
         opacity: 1;
     }
-    .addon-card {
-        background-color: #21262d;
-        padding: 15px;
-        margin-top: 10px;
-        border-radius: 10px;
-        border: 1px solid #30363d;
-    }
     footer {
         text-align: center;
         padding: 20px;
         border-top: 2px solid #30363d;
         color: #8b949e;
+    }
+    @media (max-width: 600px){
+        .copy-box { flex-direction: column; }
+        .copy-input, .copy-button { width: 100%; border-radius: 6px; margin-bottom: 5px; }
+        .copy-button { border-left: 1px solid #30363d; }
     }
 </style>
 </head>
@@ -120,7 +133,8 @@
 </header>
 
 <main>
-    <div class="card">
+    <!-- Core List -->
+    <div class="card core">
         <h2>Core List</h2>
         <p>Essential blocking — fast, minimal, and reliable.</p>
         <div class="copy-box">
@@ -131,7 +145,8 @@
         </div>
     </div>
 
-    <div class="card">
+    <!-- Full List -->
+    <div class="card full">
         <h2>Full List</h2>
         <p>Core + enhanced filters for advanced protection.</p>
         <div class="copy-box">
@@ -142,7 +157,8 @@
         </div>
     </div>
 
-    <div class="card">
+    <!-- Add-ons -->
+    <div class="card addons">
         <h2>Add-ons</h2>
         <p>Optional lists: Annoyances, Security, Social filters, etc.</p>
         
