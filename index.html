@@ -49,13 +49,34 @@
     .card p {
         color: #8b949e;
     }
-    .card a {
-        color: #9be9a8;
-        text-decoration: none;
-        font-weight: bold;
+    .copy-box {
+        display: flex;
+        margin-top: 10px;
     }
-    .card a:hover {
-        text-decoration: underline;
+    .copy-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #30363d;
+        border-radius: 6px 0 0 6px;
+        background-color: #0d1117;
+        color: #c9d1d9;
+        font-family: monospace;
+        overflow-x: auto;
+    }
+    .copy-button {
+        padding: 10px 20px;
+        border: 1px solid #30363d;
+        border-left: none;
+        border-radius: 0 6px 6px 0;
+        background-color: #21262d;
+        color: #9be9a8;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .copy-button:hover {
+        background-color: #58a6ff;
+        color: #0d1117;
     }
     footer {
         text-align: center;
@@ -68,7 +89,7 @@
 <body>
 
 <header>
-    <h1>🛡️ RK’s ZeroAds NetShield</h1>
+    <h1>🛡️ RK’s ZeroAds</h1>
     <p>Zero Noise. Zero Trackers. Zero Nonsense. Lightweight protection for uBlock Origin, AdGuard & Adblock Plus.</p>
 </header>
 
@@ -76,25 +97,44 @@
     <div class="card">
         <h2>Core List</h2>
         <p>Essential blocking — fast, minimal, and reliable.</p>
-        <a href="#">🔗 Download Core List</a>
+        <div class="copy-box">
+            <input type="text" class="copy-input" id="coreUrl" value="https://yourusername.github.io/ZeroAds-Core.txt" readonly>
+            <button class="copy-button" onclick="copyToClipboard('coreUrl')">Copy URL</button>
+        </div>
     </div>
 
     <div class="card">
         <h2>Full List</h2>
         <p>Core + enhanced filters for advanced protection.</p>
-        <a href="#">🔗 Download Full List</a>
+        <div class="copy-box">
+            <input type="text" class="copy-input" id="fullUrl" value="https://yourusername.github.io/ZeroAds-Full.txt" readonly>
+            <button class="copy-button" onclick="copyToClipboard('fullUrl')">Copy URL</button>
+        </div>
     </div>
 
     <div class="card">
         <h2>Add-ons</h2>
         <p>Optional lists: Annoyances, Security, Social filters, etc.</p>
-        <a href="#">🔗 Download Add-ons</a>
+        <div class="copy-box">
+            <input type="text" class="copy-input" id="addonsUrl" value="https://yourusername.github.io/ZeroAds-Addons.txt" readonly>
+            <button class="copy-button" onclick="copyToClipboard('addonsUrl')">Copy URL</button>
+        </div>
     </div>
 </main>
 
 <footer>
     <p>© 2025 Rimon Hossain | MIT License | Built with ☕, Chaos & Cosmic Coincidence ✨</p>
 </footer>
+
+<script>
+function copyToClipboard(id) {
+    var copyText = document.getElementById(id);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+    document.execCommand("copy");
+    alert("URL copied to clipboard!");
+}
+</script>
 
 </body>
 </html>
