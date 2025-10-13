@@ -11,26 +11,31 @@
         background-color: #0d1117;
         color: #c9d1d9;
     }
+
     header {
         background-color: #161b22;
         padding: 40px 20px;
         text-align: center;
         border-bottom: 2px solid #30363d;
     }
+
     header h1 {
         color: #58a6ff;
         margin: 0;
         font-size: 2.5em;
     }
+
     header p {
         font-size: 1.2em;
         color: #8b949e;
     }
+
     main {
         padding: 40px 20px;
         max-width: 900px;
         margin: auto;
     }
+
     .card {
         padding: 20px;
         margin-bottom: 20px;
@@ -39,42 +44,51 @@
         transition: transform 0.2s, box-shadow 0.2s;
         position: relative;
     }
+
     .card:hover {
         transform: scale(1.02);
         box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
     }
+
     .card h2 {
         margin-top: 0;
     }
+
     .card p {
         color: #8b949e;
     }
+
     .core { background-color: #161b22; border-left: 6px solid #58a6ff; }
     .full { background-color: #161b22; border-left: 6px solid #c084fc; }
     .addons { background-color: #161b22; border-left: 6px solid #56d364; }
-    .addon-card { 
-        background-color: #262a33; /* Slightly lighter for contrast */
+
+    .addon-card {
+        background-color: #262a33;
         padding: 15px;
         margin-top: 10px;
         border-radius: 10px;
         border-left: 4px solid #56d364;
         transition: transform 0.2s, box-shadow 0.2s;
     }
+
     .addon-card:hover {
         transform: scale(1.02);
         box-shadow: 0 0 12px rgba(86, 211, 100, 0.5);
     }
+
     .addon-card p {
-        color: #c9d1d9; /* Brighter text */
-        font-weight: 500; /* Slightly bolder */
+        color: #c9d1d9;
+        font-weight: 500;
         margin: 0;
     }
+
     .copy-box {
         display: flex;
         margin-top: 10px;
         position: relative;
         flex-wrap: wrap;
     }
+
     .copy-input {
         flex: 1;
         padding: 10px;
@@ -85,6 +99,7 @@
         font-family: monospace;
         overflow-x: auto;
     }
+
     .copy-button {
         padding: 10px 20px;
         border: 1px solid #30363d;
@@ -97,10 +112,12 @@
         transition: 0.2s;
         position: relative;
     }
+
     .copy-button:hover {
         background-color: #58a6ff;
         color: #0d1117;
     }
+
     .tooltip {
         position: absolute;
         top: -30px;
@@ -114,18 +131,40 @@
         transition: opacity 0.3s ease;
         pointer-events: none;
     }
+
     .tooltip.show {
         opacity: 1;
     }
+
+    .beta-badge {
+        display: inline-block;
+        margin-left: 10px;
+        padding: 3px 7px;
+        font-size: 0.7em;
+        color: #f1e05a;
+        background-color: #161b22;
+        border: 1px solid #f1e05a;
+        border-radius: 4px;
+        font-weight: bold;
+        vertical-align: middle;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
     footer {
         text-align: center;
         padding: 20px;
         border-top: 2px solid #30363d;
         color: #8b949e;
     }
-    @media (max-width: 600px){
+
+    @media (max-width: 600px) {
         .copy-box { flex-direction: column; }
-        .copy-input, .copy-button { width: 100%; border-radius: 6px; margin-bottom: 5px; }
+        .copy-input, .copy-button {
+            width: 100%;
+            border-radius: 6px;
+            margin-bottom: 5px;
+        }
         .copy-button { border-left: 1px solid #30363d; }
     }
 </style>
@@ -140,10 +179,10 @@
 <main>
     <!-- Core List -->
     <div class="card core">
-        <h2>Lite List</h2>
-        <p>Essential blocking — fast, minimal, and reliable.</p>
+        <h2>Lite List <span class="beta-badge">BETA</span></h2>
+        <p>Minimalist and fast — perfect for lightweight, everyday browsing.</p>
         <div class="copy-box">
-            <input type="text" class="copy-input" id="coreUrl" value="https://raw.githubusercontent.com/rimon3134/RK/refs/heads/main/ZeroAds-Lite.txt" readonly>
+            <input type="text" class="copy-input" id="coreUrl" value="https://rimon3134.github.io/ZeroAds-Lite.txt" readonly>
             <button class="copy-button" onclick="copyToClipboard('coreUrl', this)">Copy URL
                 <span class="tooltip">Copied!</span>
             </button>
@@ -153,10 +192,22 @@
     <!-- Full List -->
     <div class="card full">
         <h2>Full List</h2>
-        <p>Enhanced filters for advanced protection.</p>
+        <p>Full-spectrum blocking — aggressive filtering for maximum protection.</p>
         <div class="copy-box">
-            <input type="text" class="copy-input" id="fullUrl" value="https://raw.githubusercontent.com/rimon3134/RK/refs/heads/main/ZeroAds.txt" readonly>
+            <input type="text" class="copy-input" id="fullUrl" value="https://rimon3134.github.io/ZeroAds.txt" readonly>
             <button class="copy-button" onclick="copyToClipboard('fullUrl', this)">Copy URL
+                <span class="tooltip">Copied!</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Anti-AdBlocker List -->
+    <div class="card full">
+        <h2>AdGhost List</h2>
+        <p>Neutralizes anti-adblock scripts, overlays, and site blockades.</p>
+        <div class="copy-box">
+            <input type="text" class="copy-input" id="adghostUrl" value="https://rimon3134.github.io/AdGhost-List.txt" readonly>
+            <button class="copy-button" onclick="copyToClipboard('adghostUrl', this)">Copy URL
                 <span class="tooltip">Copied!</span>
             </button>
         </div>
@@ -165,9 +216,8 @@
     <!-- Add-ons -->
     <div class="card addons">
         <h2>Add-ons</h2>
-        <p>Optional lists: Security, Annoyances, Junks, etc.</p>
-        
-        <!-- Demo Add-on 1 -->
+        <p>Optional lists: Security, Annoyances, Junks, and more coming soon.</p>
+
         <div class="addon-card">
             <p>DNS-List (Coming...Soooon)</p>
             <div class="copy-box">
@@ -178,7 +228,6 @@
             </div>
         </div>
 
-        <!-- Demo Add-on 2 -->
         <div class="addon-card">
             <p>Annoyances List (Coming...Soooon)</p>
             <div class="copy-box">
@@ -189,7 +238,6 @@
             </div>
         </div>
 
-        <!-- Demo Add-on 3 -->
         <div class="addon-card">
             <p>Essentials (Coming...Soooon)</p>
             <div class="copy-box">
@@ -199,7 +247,6 @@
                 </button>
             </div>
         </div>
-        
     </div>
 </main>
 
@@ -214,7 +261,6 @@ function copyToClipboard(inputId, btn) {
     copyText.setSelectionRange(0, 99999); // For mobile devices
     document.execCommand("copy");
 
-    // Show tooltip
     var tooltip = btn.querySelector('.tooltip');
     tooltip.classList.add('show');
     setTimeout(() => tooltip.classList.remove('show'), 1500);
