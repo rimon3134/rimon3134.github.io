@@ -1,270 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🛡️ RK’s ZeroAds</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🛡️ RK’s ZeroAds</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --addon-bg: #262a33;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --muted: #8b949e;
+      --blue: #58a6ff;
+      --green: #56d364;
+      --amber: #c084fc;
+      --purple: #8250df;
+      --yellow: #f1e05a;
+    }
+
     body {
-        margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #0d1117;
-        color: #c9d1d9;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
     }
 
     header {
-        background-color: #161b22;
-        padding: 40px 20px;
-        text-align: center;
-        border-bottom: 2px solid #30363d;
+      background-color: var(--card-bg);
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--border);
+      position: relative;
     }
 
     header h1 {
-        color: #58a6ff;
-        margin: 0;
-        font-size: 2.5em;
+      color: var(--blue);
+      margin: 0;
+      font-size: 2.5em;
     }
 
     header p {
-        font-size: 1.2em;
-        color: #8b949e;
+      font-size: 1.2em;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 10px auto 0;
+    }
+
+    #themeToggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: transform 0.2s ease;
+    }
+
+    #themeToggle:hover {
+      transform: scale(1.2);
     }
 
     main {
-        padding: 40px 20px;
-        max-width: 900px;
-        margin: auto;
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
     }
 
     .card {
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 12px;
-        border: 1px solid #30363d;
-        transition: transform 0.2s, box-shadow 0.2s;
-        position: relative;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+      background-color: var(--card-bg);
     }
 
     .card:hover {
-        transform: scale(1.02);
-        box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
+      transform: scale(1.02);
+      box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
     }
 
     .card h2 {
-        margin-top: 0;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
     }
 
-    .card p {
-        color: #8b949e;
+    .instruction-list {
+      list-style: none;
+      padding-left: 0;
+      color: var(--text);
     }
 
-    .core { background-color: #161b22; border-left: 6px solid #58a6ff; }
-    .full { background-color: #161b22; border-left: 6px solid #c084fc; }
-    .addons { background-color: #161b22; border-left: 6px solid #56d364; }
-
-    .addon-card {
-        background-color: #262a33;
-        padding: 15px;
-        margin-top: 10px;
-        border-radius: 10px;
-        border-left: 4px solid #56d364;
-        transition: transform 0.2s, box-shadow 0.2s;
+    .instruction-list li {
+      margin-bottom: 1rem;
+      padding-left: 1.5em;
+      position: relative;
+      line-height: 1.4;
     }
 
-    .addon-card:hover {
-        transform: scale(1.02);
-        box-shadow: 0 0 12px rgba(86, 211, 100, 0.5);
+    .instruction-list li::before {
+      content: '➜';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-weight: bold;
     }
 
-    .addon-card p {
-        color: #c9d1d9;
-        font-weight: 500;
-        margin: 0;
-    }
-
-    .copy-box {
-        display: flex;
-        margin-top: 10px;
-        position: relative;
-        flex-wrap: wrap;
-    }
-
-    .copy-input {
-        flex: 1;
-        padding: 10px;
-        border: 1px solid #30363d;
-        border-radius: 6px 0 0 6px;
-        background-color: #0d1117;
-        color: #c9d1d9;
-        font-family: monospace;
-        overflow-x: auto;
-    }
-
-    .copy-button {
-        padding: 10px 20px;
-        border: 1px solid #30363d;
-        border-left: none;
-        border-radius: 0 6px 6px 0;
-        background-color: #21262d;
-        color: #9be9a8;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.2s;
-        position: relative;
-    }
-
-    .copy-button:hover {
-        background-color: #58a6ff;
-        color: #0d1117;
-    }
-
-    .tooltip {
-        position: absolute;
-        top: -30px;
-        right: 0;
-        background-color: #21262d;
-        color: #9be9a8;
-        padding: 5px 10px;
-        border-radius: 6px;
-        font-size: 0.9em;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-    }
-
-    .tooltip.show {
-        opacity: 1;
+    .note {
+      color: var(--muted);
+      background: rgba(88, 166, 255, 0.1);
+      padding: 12px 16px;
+      border-left: 4px solid var(--blue);
+      border-radius: 6px;
+      margin-top: 1rem;
+      font-size: 0.95rem;
     }
 
     .rk-badge {
-        display: inline-block;
-        margin-left: 10px;
-        padding: 3px 7px;
-        font-size: 0.7em;
-        color: #f1e05a;
-        background-color: #161b22;
-        border: 1px solid #f1e05a;
-        border-radius: 4px;
-        font-weight: bold;
-        vertical-align: middle;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+      display: inline-block;
+      padding: 3px 7px;
+      font-size: 0.7em;
+      color: var(--green);
+      background-color: var(--card-bg);
+      border: 1px solid var(--green);
+      border-radius: 4px;
+      font-weight: bold;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     footer {
-        text-align: center;
-        padding: 20px;
-        border-top: 2px solid #30363d;
-        color: #8b949e;
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .copy-box {
+      display: flex;
+      margin-top: 10px;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .copy-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px 0 0 6px;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: monospace;
+      overflow-x: auto;
+      min-width: 0;
+    }
+
+    .copy-button {
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      border-left: none;
+      border-radius: 0 6px 6px 0;
+      background-color: #21262d;
+      color: var(--green);
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+      position: relative;
+      user-select: none;
+    }
+
+    .copy-button:hover {
+      background-color: var(--blue);
+      color: var(--bg);
+    }
+
+    .tooltip {
+      position: absolute;
+      top: -30px;
+      right: 0;
+      background-color: #21262d;
+      color: var(--green);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .tooltip.show {
+      opacity: 1;
     }
 
     @media (max-width: 600px) {
-        .copy-box { flex-direction: column; }
-        .copy-input, .copy-button {
-            width: 100%;
-            border-radius: 6px;
-            margin-bottom: 5px;
-        }
-        .copy-button { border-left: 1px solid #30363d; }
+      .copy-box {
+        flex-direction: column;
+      }
+      .copy-input,
+      .copy-button {
+        width: 100%;
+        border-radius: 6px;
+        margin-bottom: 5px;
+      }
+      .copy-button {
+        border-left: 1px solid var(--border);
+      }
     }
-</style>
+
+    body.light {
+      --bg: #ffffff;
+      --card-bg: #f0f0f0;
+      --addon-bg: #eaeaea;
+      --border: #cccccc;
+      --text: #1e1e1e;
+      --muted: #4c4c4c;
+      --blue: #1f6feb;
+      --green: #2da44e;
+      --amber: #d29922;
+      --purple: #8250df;
+      --yellow: #d4a72c;
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <h1>🛡️ RK’s ZeroAds</h1>
-    <p>Zero Noise. Zero Trackers. Zero Nonsense. Lite or Extended protection for Vivaldi, Brave, 1DM+, uBo, AdGuard & Adblock Plus.</p>
+  <h1>🛡️ RK’s ZeroAds</h1>
+  <p>Zero Noise. Zero Trackers. Zero Nonsense. Extended protection for Vivaldi, 1DM+, uBo, AdGuard & Adblock Plus.</p>
+  <button id="themeToggle" aria-label="Toggle Dark/Light" title="Toggle Theme">🌓</button>
 </header>
 
 <main>
-    <!-- Core List -->
-    <div class="card core">
-        <h2>Full List <span class="rk-badge">ACTIVE</span></h2>
-        <p>Full-spectrum blocking — Extended filtering for maximum protection without ZERO compromise on performance.</p>
-        <div class="copy-box">
-            <input type="text" class="copy-input" id="coreUrl" value="https://rimon3134.github.io/ZeroAds.txt" readonly>
-            <button class="copy-button" onclick="copyToClipboard('coreUrl', this)">Copy URL
-                <span class="tooltip">Copied!</span>
-            </button>
-        </div>
+  <!-- Core List -->
+  <div class="card core">
+    <h2>ZeroAds <span class="rk-badge">ACTIVE</span></h2>
+    <p>Full-spectrum blocking — Extended filtering for maximum protection without ZERO compromise on performance.</p>
+    <div class="copy-box">
+      <input type="text" class="copy-input" id="coreUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/ZeroAds.txt" readonly />
+      <button class="copy-button" onclick="copyToClipboard('coreUrl', this)">Copy URL
+        <span class="tooltip">Copied!</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- DNS List -->
+  <div class="card full">
+    <h2>GhostDNS <span class="rk-badge" style="color: var(--amber); border-color: var(--amber)">IN PROGRESS</span></h2>
+    <p>Want to nuke threats before they even try to reach you? Surgical blocking with ZERO bloats.</p>
+    <div class="copy-box">
+      <input type="text" class="copy-input" id="fullUrl" value="BLANK" readonly />
+      <button class="copy-button" onclick="copyToClipboard('fullUrl', this)">Copy URL
+        <span class="tooltip">Copied!</span>
+      </button>
+    </div>
+  </div>
+  
+    <!-- ZeroBoost -->
+  <div class="card full">
+    <h2>ZeroBoost <span class="rk-badge" style="color: var(--amber); border-color: var(--amber)">ALMOST DONE</span></h2>
+    <p>Performance-first with ZERO compromise on privacy.</p>
+    <div class="copy-box">
+      <input type="text" class="copy-input" id="fullUrl" value="BLANK" readonly />
+      <button class="copy-button" onclick="copyToClipboard('fullUrl', this)">Copy URL
+        <span class="tooltip">Copied!</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- AdGhost List -->
+  <div class="card full">
+    <h2>AdGhost List <span class="rk-badge">ACTIVE</span></h2>
+    <p>Neutralizes anti-adblock scripts, overlays, and site blockades with precision.</p>
+    <div class="copy-box">
+      <input type="text" class="copy-input" id="adghostUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/AdGhost-List.txt" readonly />
+      <button class="copy-button" onclick="copyToClipboard('adghostUrl', this)">Copy URL
+        <span class="tooltip">Copied!</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Optional -->
+  <div class="card addons">
+    <h2>Optional Lists</h2>
+    <p>ZeroAds covers almost every critical areas. But If needed, The following list(s) can be used.</p>
+
+    <div class="addon-card" style="background-color: var(--addon-bg); border-left: 4px solid var(--green); border-radius: 10px; padding: 15px; margin-top: 10px;">
+      <p>ZeroJunk (No Promises)</p>
+      <div class="copy-box">
+        <input type="text" class="copy-input" id="addon1Url" value="BLANK" readonly />
+        <button class="copy-button" onclick="copyToClipboard('addon1Url', this)">Copy URL
+          <span class="tooltip">Copied!</span>
+        </button>
+      </div>
     </div>
 
-    <!-- Full List -->
-    <div class="card full">
-        <h2>DNS List<span class="rk-badge">On Progress</span></h2>
-        <p>Want to nuke threats before it even tries to reach you? Surgical with ZERO Bloats.</p>
-        <div class="copy-box">
-            <input type="text" class="copy-input" id="fullUrl" value="https://rimon3134.github.io/ZeroDNS.txt" readonly>
-            <button class="copy-button" onclick="copyToClipboard('fullUrl', this)">Copy URL
-                <span class="tooltip">Copied!</span>
-            </button>
-        </div>
+
+    <div class="addon-card" style="background-color: var(--addon-bg); border-left: 4px solid var(--green); border-radius: 10px; padding: 15px; margin-top: 10px;">
+      <p>Security Enhanced</p>
+      <div class="copy-box">
+        <input type="text" class="copy-input" id="addon3Url" value="BLANK" readonly />
+        <button class="copy-button" onclick="copyToClipboard('addon3Url', this)">Copy URL
+          <span class="tooltip">Copied!</span>
+        </button>
+      </div>
     </div>
+  </div>
 
-    <!-- Anti-AdBlocker List -->
-    <div class="card full">
-        <h2>AdGhost List<span class="rk-badge">ACTIVE</span></h2>
-        <p>Neutralizes anti-adblock scripts, overlays, and site blockades.</p>
-        <div class="copy-box">
-            <input type="text" class="copy-input" id="adghostUrl" value="https://rimon3134.github.io/AdGhost-List.txt" readonly>
-            <button class="copy-button" onclick="copyToClipboard('adghostUrl', this)">Copy URL
-                <span class="tooltip">Copied!</span>
-            </button>
-        </div>
+  <!-- Instructions -->
+  <section class="card instructions">
+    <h2>📘 How to Add These Lists</h2>
+    <p>Follow these simple steps to add the filter lists to your browser or device:</p>
+    <ul class="instruction-list">
+      <li>
+        🌐 <strong>uBlock Origin / AdGuard (Browser)</strong><br />
+        Go to <em>Settings → Filter Lists</em>, scroll to <em>Custom</em>, then paste the list URL and update.
+      </li>
+      <li>
+        📱 <strong>1DM+ (Android)</strong><br />
+        Navigate to <em>Settings → Browser → Ad Blocker</em>, paste the filter list URL and enable it.
+      </li>
+      <li>
+        🧩 <strong>Adblock Plus</strong><br />
+        In <em>Settings → Advanced</em>, find <em>Custom Filters</em> and add the URL.
+      </li>
+      <li>
+        🛡️ <strong>DNS-level Blockers</strong><br />
+        Use the DNS List URL in your DNS filtering app or router to block threats network-wide.
+      </li>
+    </ul>
+    <div class="note">
+      ⚠️ <em>Remember to refresh or update your filters regularly for best protection!</em>
     </div>
-
-    <!-- Add-ons -->
-    <div class="card addons">
-        <h2>Add-ons</h2>
-        <p>Optional lists: Security, Annoyances, Junks, and more coming soon.</p>
-
-        <div class="addon-card">
-            <p>ZeroShadow (On 20th)</p>
-            <div class="copy-box">
-                <input type="text" class="copy-input" id="addon1Url" value="https://rimon3134.github.io" readonly>
-                <button class="copy-button" onclick="copyToClipboard('addon1Url', this)">Copy URL
-                    <span class="tooltip">Copied!</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="addon-card">
-            <p>Annoyances List (Fully Optional)</p>
-            <div class="copy-box">
-                <input type="text" class="copy-input" id="addon2Url" value="https://rimon3134.github.io" readonly>
-                <button class="copy-button" onclick="copyToClipboard('addon2Url', this)">Copy URL
-                    <span class="tooltip">Copied!</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="addon-card">
-            <p>Essentials (Needs Precision)</p>
-            <div class="copy-box">
-                <input type="text" class="copy-input" id="addon3Url" value="https://rimon3134.github.io" readonly>
-                <button class="copy-button" onclick="copyToClipboard('addon3Url', this)">Copy URL
-                    <span class="tooltip">Copied!</span>
-                </button>
-            </div>
-        </div>
-    </div>
+  </section>
 </main>
 
 <footer>
-    <p>© 2025 Rimon Hossain | MIT License | Built with ☕, Chaos & Cosmic Coincidence ✨</p>
+  <p>© 2025 Rimon Hossain | MIT License | Built with ☕, Chaos & Cosmic Coincidence ✨</p>
 </footer>
 
 <script>
-function copyToClipboard(inputId, btn) {
-    var copyText = document.getElementById(inputId);
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); // For mobile devices
-    document.execCommand("copy");
+  // Copy URL & show tooltip
+  function copyToClipboard(inputId, btn) {
+    const input = document.getElementById(inputId);
+    input.select();
+    input.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(input.value).then(() => {
+      const tooltip = btn.querySelector('.tooltip');
+      tooltip.classList.add('show');
+      setTimeout(() => tooltip.classList.remove('show'), 1500);
+    });
+  }
 
-    var tooltip = btn.querySelector('.tooltip');
-    tooltip.classList.add('show');
-    setTimeout(() => tooltip.classList.remove('show'), 1500);
-}
+  // Dark/Light Mode Toggle
+  const toggleBtn = document.getElementById('themeToggle');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    toggleBtn.textContent = document.body.classList.contains('light') ? '🌞' : '🌓';
+  });
+
+  // Persist theme on reload
+  (function () {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      document.body.classList.add('light');
+      toggleBtn.textContent = '🌞';
+    }
+  })();
 </script>
 
 </body>
