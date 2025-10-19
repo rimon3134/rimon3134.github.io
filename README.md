@@ -10,10 +10,12 @@ For full info, setup instructions, and download links, visit the live page:
 
 ## Available Lists
 
-- **ZeroAds** - Full-spectrum blocking — Extended filtering for maximum protection without ZERO compromise on performance  
-- **GhostDNS** – Nuking threats before reaching you! 
-- **ZeroBoost** – Performace optimizer with ZERO compromise on privacy.
-- **AdGhost** - Ghost yourself rather than get noticed!
+- **ZeroAds** - Full-spectrum blocking — Enhanced filtering for maximum protection, with zero compromise on performance.
+- **ZeroAds Lite** - Essential blocking with basic protection. Optional Lists are recommended to be used with Lite. 
+- **Phantom-List** – Speed up web browsing — while eliminating threats from DNS-level.
+- **AdGhost-List** - Neutralizes anti-adblock scripts, overlays, and site-blockades with surgical precision.
+- **Pulse List** — For max performance! Phantom List has it built-in.
+- More on the Link....
 
 ✨ Optional List(s) will be there as well.
 
