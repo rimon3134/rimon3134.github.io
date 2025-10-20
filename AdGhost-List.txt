@@ -1,5 +1,5 @@
 [Adblock Plus 2.0]
-! Title: ☠ RK’s AdGhost List
+! Title: 💀 RK’s AdGhost List
 ! Author: Rimon Hossain
 ! Version: 20-10-2025
 ! Description: When You'd Rather Ghost Than Get Noticed. 🕶️
@@ -6507,3 +6507,4 @@ zx-pk.ru##div[style="background-color: yellow; border-width: 2px; border-style: 
 /wp-content/uploads/an-temp/*$script,stylesheet
 /wutime_adblock/*
 /xlnuxytj$domain=lightnovelspot.com|webnovelpub.com|lightnovelpub.com|lightnovelpub.vip
+
