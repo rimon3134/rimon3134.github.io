@@ -254,7 +254,6 @@
       box-shadow: 0 4px 16px rgba(88,166,255,0.35);
     }
 	
-/* Info About Me Section Glow */
 .about-text {
   line-height: 1.5;
   border-left: 4px solid var(--accent);
@@ -268,6 +267,36 @@
   transform: translateY(-2px);
 }
 
+<!-- Support -->
+
+.host-help {
+  background: var(--card-bg);
+  border-left: 4px solid var(--blue);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.host-help h2 {
+  color: var(--blue);
+  margin-top: 0;
+}
+
+.host-help p {
+  line-height: 1.6;
+  color: var(--text);
+}
+.host-help a {
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.2s ease, text-shadow 0.3s ease;
+  text-shadow: 0 0 6px rgba(86, 211, 100, 0.5);
+}
+
+.host-help a:hover {
+  color: var(--blue);
+  text-shadow: 0 0 8px rgba(88, 166, 255, 0.6);
+}
 
   </style>
 </head>
@@ -313,7 +342,7 @@
   <!-- Phantom & AdGhost Lists -->
   <div class="card full">
     <h2>Phantom List <span class="rk-badge">ACTIVE</span></h2>
-    <p>Speed up web browsing — while eliminating threats from DNS-level.</p>
+    <p>Speed up web browsing while blocking threats at the DNS level.</p>
     <div class="copy-box">
       <input type="text" class="copy-input" id="phantomUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/Phantom-List.txt" readonly />
       <button class="copy-button" onclick="copyToClipboard('phantomUrl', this)">Copy URL
@@ -335,13 +364,13 @@
 
   <!-- Optional Lists -->
   <div class="card addons">
-    <h2>Optional Lists</h2>
+    <h2>Optional Lists (No Promises)</h2>
     <p>ZeroAds covers almost everything. Still, if you want extra punch, try the lists below:</p>
 
     <div class="addon-card" style="background-color: var(--addon-bg); border-left: 4px solid var(--green); border-radius: 10px; padding: 15px; margin-top: 10px;">
-      <p><b>RK's Pulse List</b> — For max performance! <u>Phantom List</u> has it built-in.</p>
+      <p><b>RK’s Nitro List</b> — For maximum performance. Already integrated in Phantom List.</p>
       <div class="copy-box">
-        <input type="text" class="copy-input" id="addonPulseUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/Pulse-List.txt" readonly />
+        <input type="text" class="copy-input" id="addonPulseUrl" value="Soooon...Maybe!" readonly />
         <button class="copy-button" onclick="copyToClipboard('addonPulseUrl', this)">Copy URL
           <span class="tooltip">Copied!</span>
         </button>
@@ -351,7 +380,7 @@
     <div class="addon-card" style="background-color: var(--addon-bg); border-left: 4px solid var(--green); border-radius: 10px; padding: 15px; margin-top: 10px;">
       <p><b>Annoyances</b> — Captures what other popular lists miss.</p>
       <div class="copy-box">
-        <input type="text" class="copy-input" id="addonAnnoyUrl" value="BLANK" readonly />
+        <input type="text" class="copy-input" id="addonAnnoyUrl" value="Use one of the Alternatives available for now." readonly />
         <button class="copy-button" onclick="copyToClipboard('addonAnnoyUrl', this)">Copy URL
           <span class="tooltip">Copied!</span>
         </button>
@@ -361,19 +390,31 @@
 
 
   <!-- Instructions -->
+  
+  
   <section class="card instructions">
-    <h2>📘 How to Add These Lists</h2>
-    <p>Follow these quick steps to add the filter lists to your browser or device:</p>
-    <ul class="instruction-list">
-      <li>🌐 <strong>uBlock Origin / AdGuard (Browser)</strong><br />Go to <em>Settings → Filter Lists</em>, scroll to <em>Custom</em>, then paste the list URL and update.</li>
-      <li>📱 <strong>1DM+ (Android)</strong><br />Navigate to <em>Settings → Browser → Ad Blocker</em>, paste the filter list URL and enable it.</li>
-      <li>🧩 <strong>Adblock Plus</strong><br />In <em>Settings → Advanced</em>, find <em>Custom Filters</em> and add the URL.</li>
-      <li>🛡️ <strong>DNS-level Blockers</strong><br />Use the DNS List URL in your DNS filtering app or router to block threats network-wide.</li>
-    </ul>
-    <div class="note">
-      ⚠️ <em>Don’t forget to refresh or update your filters regularly for best protection!</em>
-    </div>
-  </section>
+  <h2>📘 How to Add These Lists</h2>
+  <p>Follow these quick steps to add the filter lists to your browser or device:</p>
+  <ul class="instruction-list">
+    <li>🌐 <strong>uBlock Origin / AdGuard (Browser)</strong><br />
+      Go to <em>Settings → Filter Lists</em>, scroll to <em>Custom</em>, then paste the list URL and update.<br><br>
+      👁 <b>Pro Tip:</b> To avoid overlapping, disable EasyList/AdGuard Cookies, Social, and Annoyances, but keep uBo's Annoyances active. Phantom List works with every tool and is recommended for all extensions/apps for DNS-level threat blocking.
+    </li>
+    <li>📱 <strong>1DM+ (Android)</strong><br />
+      Navigate to <em>Settings → Browser → Ad Blocker</em>, <b>delete existing lists and use ZeroAds + AdGhost Lists</b> for best performance. Phantom List can be used if you want, but it’s optional here.
+    </li>
+    <li>🧩 <strong>Adblock Plus</strong><br />
+      In <em>Settings → Advanced</em>, find <em>Custom Filters</em> and add the list URL. Phantom List is recommended for DNS-level threat blocking.
+    </li>
+    <li>🛡️ <strong>DNS-level Blockers</strong><br />
+      Apply the DNS List URL in your DNS filtering app or router. Phantom List’s main goal is DNS-level threat elimination and is highly recommended here.
+    </li>
+  </ul>
+  <div class="note">
+    ⚠️ <em>Don’t forget to refresh or update your filters regularly for best protection!</em>
+  </div>
+</section>
+
   
   <!-- Info About Me -->
   
@@ -382,6 +423,20 @@
     <h2><b>👋 Rimon Hossain</b></h2>
     <p>A curious mind wired for tweaking, testing, and turning “what ifs” into “oh, that works.” Runs on caffeine, logic, and just the right amount of chaos. If it has settings — it will be customized.</p>
   </div> 
+</section>
+
+<!-- Host File Help Section -->
+
+<section class="card host-help">
+  <h2>🧰 Need Help Securing Your Device?</h2>
+  <p>
+    I create custom host file configurations that block malware, telemetry, ads, and trackers at the system level — giving your device an extra layer of protection beyond browser extensions.
+  </p>
+  <p class="contact-text">
+    📩 Need a hand setting things up? Drop me a line at 
+    <a href="mailto:zeroAdsRimon@gmail.com"><b>HERE</b></a> 
+    or find me on Fiverr for full IT support solutions.
+  </p>
 </section>
 
   
