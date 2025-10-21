@@ -12,7 +12,7 @@ For full info, setup instructions, and download links, visit the live page:
 ## ✨ Available Lists
 
 - **ZeroAds** — Full-spectrum blocking; max protection, zero compromise.  
-- **ZeroAds Lite** — Essential blocking; lean and efficient, optional lists recommended.  
+- **ZeroDNS List** — Not Finished...Testing!  
 - **Phantom List** — Stops threats at DNS level and speeds up browsing.  
 - **AdGhost List** — Neutralizes anti-adblock scripts, overlays, and site-blockades.  
 - **RK’s Nitro List** — Optional boost; already built into Phantom List.  
