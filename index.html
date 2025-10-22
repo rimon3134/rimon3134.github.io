@@ -3,423 +3,257 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="RK’s ZeroAds — Custom filter lists for uBlock Origin, AdGuard, Adblock Plus, and 1DM+. Blocks ads, trackers, social widgets, and anti-adblock scripts. Recommended for browsers, Android apps, and DNS-level protection. Zero noise. Zero trackers. Zero nonsense." />
   <title>🛡️ RK’s ZeroAds - Filter Lists!</title>
-  <style>
-    :root {
-      --bg: #0d1117;
-      --card-bg: #161b22;
-      --addon-bg: #262a33;
-      --border: #30363d;
-      --text: #c9d1d9;
-      --muted: #8b949e;
-      --blue: #58a6ff;
-      --green: #56d364;
-      --accent: #ff8c42;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    header {
-      background-color: var(--card-bg);
-      padding: 40px 20px;
-      text-align: center;
-      border-bottom: 2px solid var(--border);
-      position: relative;
-    }
-
-    header h1 {
-      color: var(--blue);
-      margin: 0;
-      font-size: 2.5em;
-    }
-
-    header p {
-      font-size: 1.2em;
-      color: var(--muted);
-      max-width: 700px;
-      margin: 10px auto 0;
-    }
-
-    #themeToggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: var(--text);
-      transition: transform 0.2s ease;
-    }
-
-    #themeToggle:hover {
-      transform: scale(1.2);
-    }
-
-    main {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .card {
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      transition: transform 0.2s, box-shadow 0.2s;
-      background-color: var(--card-bg);
-    }
-
-    .card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
-    }
-
-    .card h2 {
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
-    }
-
-    .instruction-list {
-      list-style: none;
-      padding-left: 0;
-      color: var(--text);
-    }
-
-    .instruction-list li {
-      margin-bottom: 1rem;
-      padding-left: 1.5em;
-      position: relative;
-      line-height: 1.4;
-    }
-
-    .instruction-list li::before {
-      content: '➜';
-      position: absolute;
-      left: 0;
-      color: var(--blue);
-      font-weight: bold;
-    }
-
-    .note {
-      color: var(--muted);
-      background: rgba(88, 166, 255, 0.1);
-      padding: 12px 16px;
-      border-left: 4px solid var(--blue);
-      border-radius: 6px;
-      margin-top: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .rk-badge {
-      display: inline-block;
-      padding: 3px 7px;
-      font-size: 0.7em;
-      color: var(--green);
-      background-color: var(--card-bg);
-      border: 1px solid var(--green);
-      border-radius: 4px;
-      font-weight: bold;
-      vertical-align: middle;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 2px solid var(--border);
-      color: var(--muted);
-      font-size: 0.9rem;
-      background-color: rgba(22,27,34,0.5);
-      border-radius: 12px 12px 0 0;
-    }
-
-    .copy-box {
-      display: flex;
-      margin-top: 10px;
-      position: relative;
-      flex-wrap: wrap;
-    }
-
-    .copy-input {
-      flex: 1;
-      padding: 10px;
-      border: 1px solid var(--border);
-      border-radius: 6px 0 0 6px;
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: monospace;
-      overflow-x: auto;
-      min-width: 0;
-    }
-
-    .copy-button {
-      padding: 10px 20px;
-      border: 1px solid var(--border);
-      border-left: none;
-      border-radius: 0 6px 6px 0;
-      background-color: #21262d;
-      color: var(--green);
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-      position: relative;
-      user-select: none;
-    }
-
-    .copy-button:hover {
-      background-color: var(--blue);
-      color: var(--bg);
-    }
-
-    .tooltip {
-      position: absolute;
-      top: -30px;
-      right: 0;
-      background-color: #21262d;
-      color: var(--green);
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 0.9em;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .tooltip.show {
-      opacity: 1;
-    }
-
-    @media (max-width: 600px) {
-      .copy-box {
-        flex-direction: column;
-      }
-      .copy-input,
-      .copy-button {
-        width: 100%;
-        border-radius: 6px;
-        margin-bottom: 5px;
-      }
-      .copy-button {
-        border-left: 1px solid var(--border);
-      }
-    }
-
-    body.light {
-      --bg: #ffffff;
-      --card-bg: #f0f0f0;
-      --addon-bg: #eaeaea;
-      --border: #cccccc;
-      --text: #1e1e1e;
-      --muted: #4c4c4c;
-      --blue: #1f6feb;
-      --green: #2da44e;
-      --accent: #ff8c42;
-    }
-
-    /* Info About Me Section */
-    .about-text {
-      line-height: 1.5;
-      border-left: 4px solid var(--accent);
-      padding-left: 15px;
-      background: rgba(255, 140, 66, 0.05);
-      border-radius: 10px;
-    }
-    .about-text a {
-      transition: color 0.2s;
-      color: var(--blue);
-      text-decoration: underline;
-    }
-    .about-text a:hover {
-      color: var(--green);
-    }
-
-    /* Optional Lists Visual Upgrade */
-    .addon-card {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      transition: box-shadow 0.2s;
-    }
-    .addon-card:hover {
-      box-shadow: 0 4px 16px rgba(88,166,255,0.35);
-    }
-	
-.about-text {
-  line-height: 1.5;
-  border-left: 4px solid var(--accent);
-  padding-left: 15px;
-  background: rgba(255, 140, 66, 0.05);
-  border-radius: 10px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-.about-text:hover {
-  box-shadow: 0 0 15px rgba(255, 140, 66, 0.4);
-  transform: translateY(-2px);
-}
-
-<!-- Support -->
-
-.host-help {
-  background: var(--card-bg);
-  border-left: 4px solid var(--blue);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-
-.host-help h2 {
-  color: var(--blue);
-  margin-top: 0;
-}
-
-.host-help p {
-  line-height: 1.6;
-  color: var(--text);
-}
-.host-help a {
-  color: var(--green);
-  font-weight: 600;
-  text-decoration: underline;
-  transition: color 0.2s ease, text-shadow 0.3s ease;
-  text-shadow: 0 0 6px rgba(86, 211, 100, 0.5);
-}
-
-.host-help a:hover {
-  color: var(--blue);
-  text-shadow: 0 0 8px rgba(88, 166, 255, 0.6);
-}
-
-  </style>
 </head>
-<body>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --addon-bg: #262a33;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --muted: #8b949e;
+  --blue: #58a6ff;
+  --green: #56d364;
+  --accent: #ff8c42;
+}
 
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  background-color: var(--card-bg);
+  padding: 40px 20px;
+  text-align: center;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+
+header h1 {
+  color: var(--blue);
+  margin: 0;
+  font-size: 2.5em;
+}
+
+header p {
+  font-size: 1.2em;
+  color: var(--muted);
+  max-width: 700px;
+  margin: 10px auto 0;
+}
+
+#themeToggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: transform 0.2s ease;
+}
+#themeToggle:hover { transform: scale(1.2); }
+
+main { padding: 40px 20px; max-width: 900px; margin: auto; }
+
+.card {
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: var(--card-bg);
+}
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
+}
+.card h2 { margin-top: 0; display: flex; align-items: center; gap: 0.5em; }
+.rk-badge { display: inline-block; padding: 3px 7px; font-size: 0.7em; color: var(--green); background-color: var(--card-bg); border: 1px solid var(--green); border-radius: 4px; font-weight: bold; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.copy-box {
+  display: flex;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.copy-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px 0 0 6px;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: monospace;
+  overflow-x: auto;
+  min-width: 0;
+}
+.copy-button {
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #21262d;
+  color: var(--green);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+  user-select: none;
+}
+.copy-button:hover {
+  background-color: var(--blue);
+  color: var(--bg);
+}
+.tooltip {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  background-color: #21262d;
+  color: var(--green);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  user-select: none;
+}
+.tooltip.show { opacity: 1; }
+
+.instruction-list { list-style: none; padding-left: 0; color: var(--text); }
+.instruction-list li { margin-bottom: 1rem; padding-left: 1.5em; position: relative; line-height: 1.4; }
+.instruction-list li::before { content: '➜'; position: absolute; left: 0; color: var(--blue); font-weight: bold; }
+
+.note { color: var(--muted); background: rgba(88, 166, 255, 0.1); padding: 12px 16px; border-left: 4px solid var(--blue); border-radius: 6px; margin-top: 1rem; font-size: 0.95rem; }
+
+.addon-card { box-shadow: 0 2px 8px rgba(0,0,0,0.3); transition: box-shadow 0.2s; padding: 15px; border-radius: 10px; margin-top: 10px; }
+.addon-card:hover { box-shadow: 0 4px 16px rgba(88,166,255,0.35); }
+
+.about-text { line-height: 1.5; border-left: 4px solid var(--accent); padding-left: 15px; background: rgba(255, 140, 66, 0.05); border-radius: 10px; transition: box-shadow 0.3s ease, transform 0.3s ease; }
+.about-text:hover { box-shadow: 0 0 15px rgba(255, 140, 66, 0.4); transform: translateY(-2px); }
+
+.host-help { background: var(--card-bg); border-left: 4px solid var(--blue); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.host-help h2 { color: var(--blue); margin-top: 0; }
+.host-help p { line-height: 1.6; color: var(--text); }
+.host-help a { color: var(--green); font-weight: 600; text-decoration: underline; transition: color 0.2s ease, text-shadow 0.3s ease; text-shadow: 0 0 6px rgba(86, 211, 100, 0.5); }
+.host-help a:hover { color: var(--blue); text-shadow: 0 0 8px rgba(88, 166, 255, 0.6); }
+
+footer { text-align: center; padding: 20px; border-top: 2px solid var(--border); color: var(--muted); font-size: 0.9rem; background-color: rgba(22,27,34,0.5); border-radius: 12px 12px 0 0; }
+
+@media (max-width: 600px) {
+  .copy-box { flex-direction: column; }
+  .copy-input, .copy-button { width: 100%; border-radius: 6px; margin-bottom: 5px; }
+  .copy-button { border-left: 1px solid var(--border); }
+}
+
+body.light {
+  --bg: #ffffff; --card-bg: #f0f0f0; --addon-bg: #eaeaea; --border: #cccccc; --text: #1e1e1e; --muted: #4c4c4c;
+  --blue: #1f6feb; --green: #2da44e; --accent: #ff8c42;
+}
+</style>
+</head>
+
+<body>
 <header>
   <h1>🛡️ RK’s ZeroAds</h1>
   <p>Zero Noise. Zero Trackers. Zero Nonsense.</p>
-  
-  <div style="margin-top: 18px; display: inline-block; padding: 6px 14px; border: 1.8px solid #FF6A00; border-radius: 10px; font-size: 1em; background-color: rgba(255, 255, 224, 0.12); font-weight: 700; letter-spacing: 0.03em;">
-  Stable — Not Stale ⚡
+  <div style="margin-top: 18px; display: inline-block; padding: 6px 14px; border: 1.8px solid #FF6A00; border-radius: 10px; font-size: 1em; background-color: rgba(255,255,224,0.12); font-weight: 700; letter-spacing: 0.03em;">
+    Stable — Not Stale ⚡
   </div>
-
   <button id="themeToggle" aria-label="Toggle Dark/Light" title="Toggle Theme">🌓</button>
 </header>
 
 <main>
   <!-- Core Lists -->
-  
-    <div class="card core">
+  <div class="card core">
     <h2>ZeroAds <span class="rk-badge">ACTIVE</span></h2>
-    <p>Full-spectrum blocking — Enhanced filtering for maximum protection, with zero compromise on performance.</p>
+    <p>Full-spectrum blocking — Enhanced filtering for maximum protection, no compromise on performance.</p>
     <div class="copy-box">
-      <input type="text" class="copy-input" id="coreFullUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/ZeroAds.txt" readonly />
-      <button class="copy-button" onclick="copyToClipboard('coreFullUrl', this)">Copy URL
-        <span class="tooltip">Copied!</span>
-      </button>
+      <input type="text" class="copy-input" id="coreFullUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/ZeroAds.txt" readonly>
+      <button class="copy-button" onclick="copyToClipboard('coreFullUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
     </div>
   </div>
-  
-  
+
   <div class="card core">
     <h2>ZeroDNS List <span class="rk-badge">ACTIVE</span></h2>
-    <p>Speed up web browsing while blocking threats at the DNS level.</p>
+    <p>Accelerate browsing and block threats at the DNS level.</p>
     <div class="copy-box">
-      <input type="text" class="copy-input" id="coreLiteUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/refs/heads/main/ZeroDNS.txt" readonly />
-      <button class="copy-button" onclick="copyToClipboard('coreLiteUrl', this)">Copy URL
-        <span class="tooltip">Copied!</span>
-      </button>
+      <input type="text" class="copy-input" id="coreLiteUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/refs/heads/main/ZeroDNS.txt" readonly>
+      <button class="copy-button" onclick="copyToClipboard('coreLiteUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
     </div>
   </div>
 
   <!-- AdGhost Lists -->
- 
-
   <div class="card full">
     <h2>AdGhost List <span class="rk-badge">ACTIVE</span></h2>
     <p>Neutralizes anti-adblock scripts, overlays, and site-blockades with surgical precision.</p>
     <div class="copy-box">
-      <input type="text" class="copy-input" id="adghostUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/AdGhost-List.txt" readonly />
-      <button class="copy-button" onclick="copyToClipboard('adghostUrl', this)">Copy URL
-        <span class="tooltip">Copied!</span>
-      </button>
+      <input type="text" class="copy-input" id="adghostUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/AdGhost-List.txt" readonly>
+      <button class="copy-button" onclick="copyToClipboard('adghostUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
     </div>
   </div>
 
   <!-- Optional Lists -->
-  
-<div class="card addons">
-  <h2>Optional Lists</h2>
-  <p>Want extra punch? Try these — if you dare:</p>
-
-  <div class="addon-card" style="background-color: var(--addon-bg); border-left: 4px solid var(--accent); border-radius: 10px; padding: 15px; margin-top: 10px;">
-    <p><b>RK’s Nitro List</b> — Turbo boost for maximum performance. <em>Tiny yet powerful list.</em></p>
-    <div class="copy-box">
-      <input type="text" class="copy-input" id="addonPulseUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/Nitro-List.txt" readonly />
-      <button class="copy-button" onclick="copyToClipboard('addonPulseUrl', this)">Copy URL
-        <span class="tooltip">Copied!</span>
-      </button>
+  <div class="card addons">
+    <h2>Optional Lists</h2>
+    <p>Want extra punch? Try these:</p>
+    <div class="addon-card">
+      <p><b>RK’s Nitro List</b> — Turbo boost for maximum performance. <em>Tiny yet powerful list.</em></p>
+      <div class="copy-box">
+        <input type="text" class="copy-input" id="addonPulseUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/Nitro-List.txt" readonly>
+        <button class="copy-button" onclick="copyToClipboard('addonPulseUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
+      </div>
     </div>
   </div>
 
   <!-- Instructions -->
-  
-  
   <section class="card instructions">
-  <h2>📘 How to Add These Lists</h2>
-  <p>Follow these quick steps to add the filter lists to your browser or device:</p>
-  <ul class="instruction-list">
-    <li>🌐 <strong>uBlock Origin / AdGuard (Browser)</strong><br />
-      Go to <em>Settings → Filter Lists</em>, scroll to <em>Custom</em>, then paste the list URL and update.<br><br>
-      👁 <b>Pro Tip:</b> To avoid overlapping, disable EasyList/AdGuard Cookies, Social, and Annoyances, but keep uBo's Annoyances active. ZeroDNS List works with every tool and is recommended for all extensions/apps for DNS-level threat blocking.
-    </li>
-    <li>📱 <strong>1DM+ (Android)</strong><br />
-      Navigate to <em>Settings → Browser → Ad Blocker</em>, <b>delete existing lists and use ZeroAds + AdGhost Lists</b> for best performance. ZeroDNS List can be used if you want, but it’s optional here.
-    </li>
-    <li>🧩 <strong>Adblock Plus</strong><br />
-      In <em>Settings → Advanced</em>, find <em>Custom Filters</em> and add the list URL. ZeroDNS List is recommended for DNS-level threat blocking.
-    </li>
-    <li>🛡️ <strong>DNS-level Blockers</strong><br />
-      Apply the DNS List URL in your DNS filtering app or router. ZeroDNS List’s main goal is DNS-level threat elimination and is highly recommended here.
-    </li>
-  </ul>
-  <div class="note">
-    ⚠️ <em>Don’t forget to refresh or update your filters regularly for best protection!</em>
-  </div>
-</section>
+    <h2>📘 How to Add These Lists</h2>
+    <ul class="instruction-list">
+  <li>
+    <strong>🌐 uBlock Origin / AdGuard (Browser)</strong><br>
+    Settings → Filter Lists → Custom → Paste URL → Update.<br>
+    🌟 <em>Pro Tip:</em> Disable overlapping filters (EasyList, Cookies, Social, Annoyances) but keep uBo’s Annoyances active. ZeroDNS List recommended for DNS-level protection.
+  </li>
+  <li>
+    <strong>📱 1DM+ (Android)</strong><br>
+    Settings → Browser → Ad Blocker → Delete existing → Add ZeroAds + AdGhost. ZeroDNS optional.
+  </li>
+  <li>
+    <strong>🧩 Adblock Plus</strong><br>
+    Settings → Advanced → Custom Filters → Add list URL. ZeroDNS recommended.
+  </li>
+  <li>
+    <strong>🛡️ DNS-level Blockers</strong><br>
+    Apply ZeroDNS URL in DNS filtering app or router. Highly recommended.
+  </li>
+</ul>
+<div class="note">⚠️ Refresh/update filters regularly for best protection!</div>
 
-  
-  <!-- Info About Me -->
-  
-<section class="card about">
-  <div class="about-text">
-    <h2><b>👋 Rimon Hossain</b></h2>
-    <p>A curious mind wired for tweaking, testing, and turning “what ifs” into “oh, that works.” Runs on caffeine, logic, and just the right amount of chaos. If it has settings — it will be customized.</p>
-  </div> 
-</section>
+  </section>
 
-<!-- Host File Help Section -->
+  <!-- About Me -->
+  <section class="card about">
+    <div class="about-text">
+      <h2>👋 Rimon Hossain</h2>
+      <p>A curious mind wired for tweaking, testing, and turning “what ifs” into “oh, that works.” Runs on caffeine, logic, and just the right amount of chaos. If it has settings — it will be customized.</p>
+    </div>
+  </section>
 
-<section class="card host-help">
-  <h2>🧰 Need Help Securing Your Device?</h2>
-  <p>
-    I create custom host file configurations that block malware, telemetry, ads, and trackers at the system level — giving your device an extra layer of protection beyond browser extensions.
-  </p>
-  <p class="contact-text">
-    📩 Need a hand setting things up? Drop me a line at 
-    <a href="mailto:zeroAdsRimon@gmail.com"><b>HERE</b></a> 
-    or find me on Fiverr for full IT support solutions.
-  </p>
-</section>
-
-  
+  <!-- Host File Help -->
+  <section class="card host-help">
+    <h2>🧰 Need Help Securing Your Device?</h2>
+    <p>I create custom host file configurations that block malware, telemetry, ads, and trackers at the system level — giving your device extra protection beyond browser extensions.</p>
+    <p class="contact-text">📩 Drop me a line at <a href="mailto:zeroAdsRimon@gmail.com"><b>HERE</b></a> or find me on Fiverr for full IT support solutions.</p>
+  </section>
 </main>
 
 <footer>
@@ -427,33 +261,32 @@
 </footer>
 
 <script>
-  // Copy URL & show tooltip
-  function copyToClipboard(inputId, btn) {
-    const input = document.getElementById(inputId);
-    input.select();
-    input.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(input.value).then(() => {
-      const tooltip = btn.querySelector('.tooltip');
-      tooltip.classList.add('show');
-      setTimeout(() => tooltip.classList.remove('show'), 1500);
-    });
-  }
-
-  // Dark/Light Mode Toggle
-  const toggleBtn = document.getElementById('themeToggle');
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('light');
-    toggleBtn.textContent = document.body.classList.contains('light') ? '🌞' : '🌓';
+// Copy URL & show tooltip
+function copyToClipboard(inputId, btn) {
+  const input = document.getElementById(inputId);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value).then(() => {
+    const tooltip = btn.querySelector('.tooltip');
+    tooltip.classList.add('show');
+    setTimeout(() => tooltip.classList.remove('show'), 1500);
   });
+}
 
-  // Persist theme on reload
-  (function () {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      document.body.classList.add('light');
-      toggleBtn.textContent = '🌞';
-    }
-  })();
+// Dark/Light Toggle
+const toggleBtn = document.getElementById('themeToggle');
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  toggleBtn.textContent = document.body.classList.contains('light') ? '🌞' : '🌓';
+});
+
+// Persist theme on reload
+(function() {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+    document.body.classList.add('light');
+    toggleBtn.textContent = '🌞';
+  }
+})();
 </script>
-
 </body>
 </html>
