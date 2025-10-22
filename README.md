@@ -7,18 +7,6 @@ Lightweight filter lists for savvy users who want clean, fast, and threat-free b
 For full info, setup instructions, and download links, visit the live page:  
 ➡️ [https://rimon3134.github.io/](https://rimon3134.github.io/)
 
----
-
-## ✨ Available Lists
-
-- **ZeroAds** — Full-spectrum blocking; max protection, zero compromise.  
-- **ZeroDNS List** — Not Finished...Testing!  
-- **Phantom List** — Stops threats at DNS level and speeds up browsing.  
-- **AdGhost List** — Neutralizes anti-adblock scripts, overlays, and site-blockades.  
-- **RK’s Nitro List** — Optional boost; already built into Phantom List.  
-- **Optional Lists** — Extra punch, coming soon… maybe. No promises!  
-
----
 
 ## 📘 How to Add These Lists
 
