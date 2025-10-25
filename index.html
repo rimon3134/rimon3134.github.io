@@ -134,9 +134,6 @@ main { padding: 40px 20px; max-width: 900px; margin: auto; }
 
 .note { color: var(--muted); background: rgba(88, 166, 255, 0.1); padding: 12px 16px; border-left: 4px solid var(--blue); border-radius: 6px; margin-top: 1rem; font-size: 0.95rem; }
 
-.addon-card { box-shadow: 0 2px 8px rgba(0,0,0,0.3); transition: box-shadow 0.2s; padding: 15px; border-radius: 10px; margin-top: 10px; }
-.addon-card:hover { box-shadow: 0 4px 16px rgba(88,166,255,0.35); }
-
 .about-text { line-height: 1.5; border-left: 4px solid var(--accent); padding-left: 15px; background: rgba(255, 140, 66, 0.05); border-radius: 10px; transition: box-shadow 0.3s ease, transform 0.3s ease; }
 .about-text:hover { box-shadow: 0 0 15px rgba(255, 140, 66, 0.4); transform: translateY(-2px); }
 
@@ -191,8 +188,7 @@ body.light {
     </div>
   </div>
 
-  <!-- AdGhost Lists -->
-  <div class="card full">
+  <div class="card core">
     <h2>AdGhost List <span class="rk-badge">ACTIVE</span></h2>
     <p>Neutralizes anti-adblock scripts, overlays, and site-blockades with surgical precision.</p>
     <div class="copy-box">
@@ -201,44 +197,42 @@ body.light {
     </div>
   </div>
 
-  <!-- Optional Lists -->
-  <div class="card addons">
-    <h2>Optional Lists</h2>
-    <p>Want extra punch? Try these:</p>
-    <div class="addon-card">
-      <p><b>RK’s Nitro List</b> — Turbo boost for maximum performance. <em>Tiny yet powerful list.</em></p>
-      <div class="copy-box">
-        <input type="text" class="copy-input" id="addonPulseUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/Nitro-List.txt" readonly>
-        <button class="copy-button" onclick="copyToClipboard('addonPulseUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
-      </div>
+  <div class="card core">
+    <h2>RK’s Nitro List <span class="rk-badge">ESSENTIAL</span></h2>
+    <p>Blocks cookie notices, widgets, and annoyances — speeds up web browsing up to 3× faster with no compromise on privacy. It even blocks extra annoyances if you let it.</p>
+    <div class="copy-box">
+      <input type="text" class="copy-input" id="addonPulseUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/Nitro-List.txt" readonly>
+      <button class="copy-button" onclick="copyToClipboard('addonPulseUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
     </div>
   </div>
-
+  
+  
   <!-- Instructions -->
   <section class="card instructions">
     <h2>📘 How to Add These Lists</h2>
     <ul class="instruction-list">
-  <li>
-    <strong>🌐 uBlock Origin / AdGuard (Browser)</strong><br>
-    Settings → Filter Lists → Custom → Paste URL → Update.<br>
-    🌟 <em>Pro Tip:</em> Disable overlapping filters (EasyList, Cookies, Social, Annoyances) but keep uBo’s Annoyances active. ZeroDNS List recommended for DNS-level protection.
-  </li>
-  <li>
-    <strong>📱 1DM+ (Android)</strong><br>
-    Settings → Browser → Ad Blocker → Delete existing → Add ZeroAds + AdGhost. ZeroDNS optional.
-  </li>
-  <li>
-    <strong>🧩 Adblock Plus</strong><br>
-    Settings → Advanced → Custom Filters → Add list URL. ZeroDNS recommended.
-  </li>
-  <li>
-    <strong>🛡️ DNS-level Blockers</strong><br>
-    Apply ZeroDNS URL in DNS filtering app or router. Highly recommended.
-  </li>
-</ul>
-<div class="note">⚠️ Refresh/update filters regularly for best protection!</div>
-
+      <li>
+        <strong>🌐 uBlock Origin / AdGuard (Browser)</strong><br>
+        Settings → Filter Lists → Custom → Paste URL → Update.<br>
+        🐎 <em>RK’s Nitro List — Speed up web browsing with NO compromise on privacy.</em><br>
+        ✅ Disable Easy/AdGuard Cookies, Social, and Annoyances (keep uBo’s Annoyances only). ZeroDNS List recommended for DNS-level protection.
+      </li>
+      <li>
+        <strong>📱 1DM+ (Android)</strong><br>
+        Settings → Browser → Ad Blocker → Delete existing → Add ZeroAds + AdGhost + Nitro. ZeroDNS optional.
+      </li>
+      <li>
+        <strong>🧩 Adblock Plus</strong><br>
+        Settings → Advanced → Custom Filters → Add list URL. ZeroDNS recommended.
+      </li>
+      <li>
+        <strong>🛡️ DNS-level Blockers</strong><br>
+        Apply ZeroDNS URL in DNS filtering app or router. Highly recommended.
+      </li>
+    </ul>
+    <div class="note">⚠️ Refresh/update filters regularly for best protection!</div>
   </section>
+
 
   <!-- About Me -->
   <section class="card about">
