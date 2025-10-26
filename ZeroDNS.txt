@@ -1,5 +1,5 @@
 [Adblock Plus 2.0]
-! Title: 🛡 RK’s ZeroDNS List
+! Title: 🎯 RK’s ZeroDNS List
 ! Author: Rimon Hossain
 ! Version: 26-10-2025
 ! Description: Root-level shield against ads, trackers, and telemetry — purges digital parasites before they even reach your browser. Fast, silent, absolute.
