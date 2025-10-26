@@ -1,5 +1,5 @@
 [Adblock Plus 2.0]
-! Title: 🌀 RK’s Nitro List
+! Title: 🏹 RK’s Nitro List
 ! Author: Rimon Hossain
 ! Version: 27-10-2025
 ! Description: Blocks cookie notices, widgets, and annoyances — speeds up web browsing up to 3× faster with no compromise on privacy. It even blocks extra annoyances if you let it.
@@ -3191,4 +3191,5 @@ zdnet.com##p strong:has-text(/^Also/):upward(p)
 @@|recaptchaenterprise.mtls.googleapis.com^
 @@|recaptcha.net^
 @@|recaptcha.net.cn^
+
 @@|v2.cutcaptcha.net^
