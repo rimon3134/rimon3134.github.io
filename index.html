@@ -183,7 +183,17 @@ main { padding: 40px 20px; max-width: 900px; margin: auto; }
 .instruction-list li { margin-bottom: 1rem; padding-left: 1.5em; position: relative; line-height: 1.4; }
 .instruction-list li::before { content: '➜'; position: absolute; left: 0; color: var(--blue); font-weight: bold; }
 
-.note { color: var(--muted); background: rgba(88, 166, 255, 0.1); padding: 12px 16px; border-left: 4px solid var(--blue); border-radius: 6px; margin-top: 1rem; font-size: 0.95rem; }
+.note {
+  color: var(--text-bright, #eaf3ff);
+  background: rgba(0, 119, 255, 0.15);
+  padding: 12px 16px;
+  border-left: 3px solid var(--blue, #58a6ff);
+  border-radius: 8px;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  backdrop-filter: blur(6px) saturate(140%);
+  box-shadow: 0 0 8px rgba(88, 166, 255, 0.2);
+}
 
 .about-text { line-height: 1.5; border-left: 4px solid var(--accent); padding-left: 15px; background: rgba(255, 140, 66, 0.05); border-radius: 10px; transition: box-shadow 0.3s ease, transform 0.3s ease; }
 .about-text:hover { box-shadow: 0 0 15px rgba(255, 140, 66, 0.4); transform: translateY(-2px); }
@@ -240,7 +250,7 @@ body.light {
 
   <div class="card core">
     <h2>AdGhost <span class="rk-badge elite">ELITE</span></h2>
-    <p>Neutralizes anti-adblock scripts, overlays, and site-blockades with surgical precision. 95% effective.</p>
+    <p>Neutralizes anti-adblock scripts, overlays, and site-blockades with surgical precision.</p>
     <div class="copy-box">
       <input type="text" class="copy-input" id="adghostUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/AdGhost-List.txt" readonly>
       <button class="copy-button" onclick="copyToClipboard('adghostUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
@@ -248,37 +258,42 @@ body.light {
   </div>
 
   <div class="card core">
-    <h2>RK’s Nitro List <span class="rk-badge recommended">RECOMMENDED</span></h2>
-    <p>Blocks cookie notices, widgets, and annoyances — speeds up web browsing up to 3× faster with no compromise on privacy. It even blocks extra annoyances if you let it.</p>
-    <div class="copy-box">
-      <input type="text" class="copy-input" id="addonPulseUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/Nitro-List.txt" readonly>
-      <button class="copy-button" onclick="copyToClipboard('addonPulseUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
-    </div>
+  <h2>RK’s Nitro List <span class="rk-badge recommended">RECOMMENDED</span></h2>
+  <p>Zero Noise, Zero Nonsense — blocks cookie popups, overlays, and junk scripts for a clean, lightning-fast web.</p>
+  <div class="copy-box">
+    <input type="text" class="copy-input" id="addonPulseUrl" value="https://raw.githubusercontent.com/rimon3134/rimon3134.github.io/main/Nitro-List.txt" readonly>
+    <button class="copy-button" onclick="copyToClipboard('addonPulseUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
   </div>
+</div>
   
   <!-- Instructions -->
+  
   <section class="card instructions">
     <h2>📘 How to Add These Lists</h2>
     <ul class="instruction-list">
       <li>
-        <strong>🌐 uBlock Origin / AdGuard (Browser)</strong><br>
-        Settings → Filter Lists → Custom → Paste URL → Update.<br>
-        🐎 <em>RK’s Nitro List — Speed up web browsing with NO compromise on privacy.</em><br>
-        ✅ Disable Easy/AdGuard Cookies, Social, and Annoyances (keep uBo’s Annoyances only). ZeroDNS List recommended for DNS-level protection.
+      <strong>🌐 uBo / AdGuard (Extensions)</strong><br>
+      Settings → Filter Lists → Custom → Paste URL → Update.<br>
+      🚀 Keep only <b>uBO’s core lists</b>, then add <b>ZeroAds + ZeroDNS + AdGhost + Nitro</b>.<br>
+      📌 <em><b>Skip ZeroAds</b></em> if it feels too strict.
+      </li>
+	  <li>
+      <strong>🧭 Vivaldi</strong><br>
+      Settings → Privacy → Tracker & Ad Blocking → Manage Sources.<br>
+      ☑️ Uncheck all default Ad lists.<br>
+      ➕ Add <b>ZeroAds + AdGhost</b> for full protection.<br>
+      🔧 Under <em>Trackers</em>, keep <b>EasyPrivacy</b> instead of DuckDuckGo.<br>
       </li>
       <li>
         <strong>📱 1DM+ (Android)</strong><br>
-        Settings → Browser → Ad Blocker → Delete existing → Add ZeroAds + AdGhost + Nitro. ZeroDNS optional.
+        Settings → Browser → Ad Blocker → Delete existing → Add <b>ZeroAds + AdGhost</b> for best result.
       </li>
       <li>
-        <strong>🧩 Adblock Plus</strong><br>
-        Settings → Advanced → Custom Filters → Add list URL. ZeroDNS recommended.
+        <strong>🧩 ABP For Samsung Internet</strong><br>
+        Enable ABP For SI → Enable default filters → Add <b>ZeroAds + AdGhost</b> for full protection.
       </li>
-      <li>
-        <strong>🛡️ DNS-level Blockers</strong><br>
-        Apply ZeroDNS URL in DNS filtering app or router. Highly recommended.
-      </li>
-    </ul>
+      </ul>
+	  
     <div class="note">⚠️ Refresh/update filters regularly for best protection!</div>
   </section>
 
