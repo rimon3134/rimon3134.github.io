@@ -1,5 +1,5 @@
 [Adblock Plus 2.0]
-! Title: ⛔ RK’s ZeroNoise List
+! Title: 📍RK’s ZeroNoise List
 ! Author: Rimon Hossain
 ! Version: 28-10-2025
 ! Description: Zero Noise, Zero Nonsense — blocks cookie popups, overlays, and junk scripts for a clean, lightning-fast web.
