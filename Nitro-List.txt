@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Title: 🔥 RK’s Nitro List
+! Title: ⛔ RK’s ZeroNoise List
 ! Author: Rimon Hossain
 ! Version: 27-10-2025
-! Description: Blocks cookie notices, widgets, and annoyances — speeds up web browsing up to 3× faster with no compromise on privacy. It even blocks extra annoyances if you let it.
+! Description: Zero Noise, Zero Nonsense — blocks cookie popups, overlays, and junk scripts for a clean, lightning-fast web.
 ! Homepage: https://rimon3134.github.io
 ! License: MIT
 ! Note: Brewed with coffee, logic & cosmic coincidence ☕✨🤣
