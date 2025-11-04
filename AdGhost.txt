@@ -1,4 +1,4 @@
-! Title: 👁 RK’s AdGhost List
+! Title: 💀 RK’s AdGhost List
 ! Author: Rimon Hossain
 ! Version: 05-11-2025v2
 ! Description: Neutralizes anti-adblock scripts, overlays, and site-blockades with surgical precision. 🕶️
