@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🛡️ RK’s ZeroAds - Filter Lists!</title>
-<meta name="description" content="Stable, secure, and fast ad-blocking lists by RK. Includes ZeroAds, ZeroAds Ultimate, ZeroDNS, AdGhost, and ZeroFuss for full web protection.">
-<meta name="keywords" content="Ad Blocking, ZeroAds, ZeroDNS, AdGhost, ZeroFuss, uBlock, AdGuard, ABP, Tracker Protection">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="RK’s ZeroAds — Custom filter lists for uBlock Origin, AdGuard, Adblock Plus, and 1DM+. Blocks ads, trackers, social widgets, and anti-adblock scripts. Recommended for browsers, Android apps, and DNS-level protection. Zero noise. Zero trackers. Zero nonsense." />
+<meta name="keywords" content="Ad Blocking, Custom Filters, Annoyances Filter, uBo Filter, uBlock Filters, ABP Filters, Privacy Filters, ABP, Tracker Protection">
 <meta name="author" content="Rimon Hossain">
+<title>🛡️ RK’s Filter Lists!</title>
 <style>
 :root {
   --bg: #0d1117;
@@ -81,54 +81,22 @@ main { padding: 40px 20px; max-width: 900px; margin: auto; }
 }
 .card h2 { margin-top: 0; display: flex; align-items: center; gap: 0.5em; }
 
-
 .rk-badge {
   display: inline-block;
   padding: 3px 7px;
   font-size: 0.7em;
-  color: var(--green);
-  background-color: var(--card-bg);
-  border: 1px solid var(--green);
-  border-radius: 4px;
   font-weight: bold;
-  vertical-align: middle;
+  border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  transition: all 0.25s ease;
+  vertical-align: middle;
 }
 
-.rk-badge.essential {
-  color: #42a5f5;
-  background-color: rgba(33, 150, 243, 0.08);
-  border: 1px solid rgba(66, 165, 245, 0.6);
-}
-
-.rk-badge.recommended {
-  color: #00e676;
-  background-color: rgba(0, 230, 118, 0.08);
-  border: 1px solid rgba(0, 230, 118, 0.6);
-}
-
-.rk-badge.elite {
-  color: #ffffff;             /* bright text for contrast */
-  background-color: rgba(124, 77, 255, 0.12); /* soft subtle purple */
-  border: 1px solid #a64aff;  /* slightly stronger purple border */
-  font-weight: 700;
-}
-
-}
-.rk-badge.elite:hover {
-  box-shadow: 0 0 16px rgba(166, 74, 255, 0.6);
-  transform: translateY(-1px) scale(1.05);
-}
-
-
-.rk-badge.legacy {
-  color: #b0bec5;
-  background-color: rgba(158, 158, 158, 0.08);
-  border: 1px solid rgba(176, 190, 197, 0.4);
-  font-style: italic;
-}
+.rk-badge.active { color: #56d364; border: 1px solid #56d364; background: transparent; }
+.rk-badge.essential { color: #42a5f5; border: 1px solid #42a5f5; background: transparent; }
+.rk-badge.elite { color: #a64aff; border: 1px solid #a64aff; background: transparent; }
+.rk-badge.recommended { color: #00e676; border: 1px solid #00e676; background: transparent; }
+.rk-badge.legacy { color: #b0bec5; border: 1px solid #b0bec5; background: transparent; font-style: italic; }
 
 /* Copy box */
 .copy-box {
@@ -218,6 +186,27 @@ body.light {
   --bg: #ffffff; --card-bg: #f0f0f0; --addon-bg: #eaeaea; --border: #cccccc; --text: #1e1e1e; --muted: #4c4c4c;
   --blue: #1f6feb; --green: #2da44e; --accent: #ff8c42;
 }
+
+/* Optional Section Styles */
+.optional .copy-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+.optional .copy-box .copy-input {
+  flex: 1 1 300px;
+  min-width: 300px;
+}
+.optional .copy-box .copy-button {
+  flex: 0 0 auto;
+}
+@media (max-width: 600px) {
+  .optional .copy-box { flex-direction: column; }
+  .optional .copy-box .copy-input,
+  .optional .copy-box .copy-button { width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -231,42 +220,60 @@ body.light {
 </header>
 
 <main>
+
+<!-- Why RK's Lists -->
+
+<section class="card host-help">
+  <h2>❓ Why RK'S Lists?</h2>
+
+  <p>RK’s lists block what matters—ads, trackers, AI nonsense, and annoyances—without slowing you down.</p>
+  <ul>
+    <li>Fewer rules, same or better results.</li>
+	<li>Accelerated browsing, No compromise on privacy.</li>
+    <li>Focus on essentials, nothing extra.</li>
+    <li>Functional—nothing breaks, nothing hidden.</li>
+    <li>Maintained whenever needed.</li>
+  </ul>
+</section>
+
   <!-- Core Lists -->
+  
   <div class="card core">
-    <h2>ZeroAds <span class="rk-badge">ACTIVE</span></h2>
+    <h2>ZeroAds <span class="rk-badge active">ACTIVE</span></h2>
     <p>Full-spectrum blocking — Enhanced filtering for maximum protection, no compromise on performance.</p>
     <div class="copy-box">
       <input type="text" class="copy-input" id="coreFullUrl" value="https://rimon3134.github.io/ZeroAds.txt" readonly>
       <button class="copy-button" onclick="copyToClipboard('coreFullUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
     </div>
   </div>
-
+  
   <div class="card core">
-    <h2>ZeroDNS <span class="rk-badge">ESSENTIAL</span></h2>
-    <p>Accelerate browsing and block threats at the DNS level.</p>
+    <h2>ZeroFuss <span class="rk-badge essential">ESSENTIAL</span></h2>
+    <p>Zero Noise, Zero Nonsense — blocks cookie popups, overlays, and junk scripts for a clean, lightning-fast web.</p>
     <div class="copy-box">
-      <input type="text" class="copy-input" id="coreLiteUrl" value="https://rimon3134.github.io/ZeroDNS.txt" readonly>
-      <button class="copy-button" onclick="copyToClipboard('coreLiteUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
+      <input type="text" class="copy-input" id="addonPulseUrl" value="https://rimon3134.github.io/ZeroFuss.txt" readonly>
+      <button class="copy-button" onclick="copyToClipboard('addonPulseUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
     </div>
   </div>
-
+  
+  
   <div class="card core">
-    <h2>AdGhost <span class="rk-badge">ELITE</span></h2>
+    <h2>AdGhost <span class="rk-badge elite">ELITE</span></h2>
     <p>Neutralizes anti-adblock scripts, overlays, and site-blockades with surgical precision.</p>
     <div class="copy-box">
       <input type="text" class="copy-input" id="adghostUrl" value="https://rimon3134.github.io/AdGhost.txt" readonly>
       <button class="copy-button" onclick="copyToClipboard('adghostUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
     </div>
   </div>
-
-  <div class="card core">
-  <h2>ZeroFuss <span class="rk-badge">RECOMMENDED</span></h2>
-  <p>Zero Noise, Zero Nonsense — blocks cookie popups, overlays, and junk scripts for a clean, lightning-fast web.</p>
-  <div class="copy-box">
-    <input type="text" class="copy-input" id="addonPulseUrl" value="https://rimon3134.github.io/ZeroFuss.txt" readonly>
-    <button class="copy-button" onclick="copyToClipboard('addonPulseUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
+  
+    <div class="card core">
+    <h2>ZeroDNS <span class="rk-badge recommended">RECOMMENDED</span></h2>
+    <p>Accelerate browsing and block threats at the DNS level.</p>
+    <div class="copy-box">
+      <input type="text" class="copy-input" id="coreLiteUrl" value="https://rimon3134.github.io/ZeroDNS.txt" readonly>
+      <button class="copy-button" onclick="copyToClipboard('coreLiteUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
+    </div>
   </div>
-</div>
   
   <!-- Instructions -->
   
@@ -274,17 +281,10 @@ body.light {
     <h2>📘 How to Add These Lists</h2>
     <ul class="instruction-list">
       <li>
-      <strong>🌐 uBo / AdGuard (Extensions)</strong><br>
+      <strong>🌐 uBo / AdGuard /ABP (Extensions)</strong><br>
       Settings → Filter Lists → Custom → Paste URL → Update.<br>
       🚀 Keep only <b>uBO’s core lists</b>, then add <b>ZeroAds + ZeroDNS + AdGhost + ZeroFuss</b>.<br>
       📌 <em><b>Skip ZeroAds</b></em> if it feels too strict.
-      </li>
-	  <li>
-      <strong>🧭 Vivaldi</strong><br>
-      Settings → Privacy → Tracker & Ad Blocking → Manage Sources.<br>
-      ☑️ Uncheck all default Ad lists.<br>
-      ➕ Add <b>ZeroAds + AdGhost</b> for full protection.<br>
-      🔧 Under <em>Trackers</em>, keep <b>EasyPrivacy</b> instead of DuckDuckGo.<br>
       </li>
       <li>
         <strong>📱 1DM+ (Android)</strong><br>
@@ -302,7 +302,7 @@ body.light {
   <!-- About Me -->
   <section class="card about">
     <div class="about-text">
-      <h2>👋 Rimon Hossain</h2>
+      <h2>👋 RK</h2>
       <p>A curious mind wired for tweaking, testing, and turning “what ifs” into “oh, that works.” Runs on caffeine, logic, and just the right amount of chaos. If it has settings — it will be customized.</p>
     </div>
   </section>
@@ -316,15 +316,13 @@ body.light {
 </main>
 
 <footer>
-  <p>© 2025 Rimon Hossain | MIT License | Built with ☕, Chaos & Cosmic Coincidence ✨</p>
+  <p>© 2025 RK | MIT License | Built with ☕, Chaos & Cosmic Coincidence ✨</p>
 </footer>
 
 <script>
-function copyToClipboard(inputId, btn) {
-  const input = document.getElementById(inputId);
-  input.select();
-  input.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(input.value).then(() => {
+function copyToClipboard(input, btn) {
+  let value = typeof input === 'string' ? document.getElementById(input).value : input.value;
+  navigator.clipboard.writeText(value).then(() => {
     const tooltip = btn.querySelector('.tooltip');
     tooltip.classList.add('show');
     setTimeout(() => tooltip.classList.remove('show'), 1500);
