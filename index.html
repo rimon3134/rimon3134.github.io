@@ -81,6 +81,7 @@ main { padding: 40px 20px; max-width: 900px; margin: auto; }
 }
 .card h2 { margin-top: 0; display: flex; align-items: center; gap: 0.5em; }
 
+
 .rk-badge {
   display: inline-block;
   padding: 3px 7px;
@@ -186,27 +187,6 @@ body.light {
   --bg: #ffffff; --card-bg: #f0f0f0; --addon-bg: #eaeaea; --border: #cccccc; --text: #1e1e1e; --muted: #4c4c4c;
   --blue: #1f6feb; --green: #2da44e; --accent: #ff8c42;
 }
-
-/* Optional Section Styles */
-.optional .copy-box {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-top: 15px;
-  flex-wrap: wrap;
-}
-.optional .copy-box .copy-input {
-  flex: 1 1 300px;
-  min-width: 300px;
-}
-.optional .copy-box .copy-button {
-  flex: 0 0 auto;
-}
-@media (max-width: 600px) {
-  .optional .copy-box { flex-direction: column; }
-  .optional .copy-box .copy-input,
-  .optional .copy-box .copy-button { width: 100%; }
-}
 </style>
 </head>
 <body>
@@ -248,16 +228,16 @@ body.light {
     </div>
   </div>
   
+  
   <div class="card core">
-    <h2>ZeroFuss <span class="rk-badge essential">ESSENTIAL</span></h2>
-    <p>Zero Noise, Zero Nonsense — blocks cookie popups, overlays, and junk scripts for a clean, lightning-fast web.</p>
-    <div class="copy-box">
-      <input type="text" class="copy-input" id="addonPulseUrl" value="https://rimon3134.github.io/ZeroFuss.txt" readonly>
-      <button class="copy-button" onclick="copyToClipboard('addonPulseUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
-    </div>
+  <h2>ZeroFuss <span class="rk-badge essential">ESSENTIAL</span></h2>
+  <p>Zero Noise, Zero Nonsense — blocks cookie popups, overlays, and junk scripts for a clean, lightning-fast web.</p>
+  <div class="copy-box">
+    <input type="text" class="copy-input" id="addonPulseUrl" value="https://rimon3134.github.io/ZeroFuss.txt" readonly>
+    <button class="copy-button" onclick="copyToClipboard('addonPulseUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
   </div>
-  
-  
+</div>
+
   <div class="card core">
     <h2>AdGhost <span class="rk-badge elite">ELITE</span></h2>
     <p>Neutralizes anti-adblock scripts, overlays, and site-blockades with surgical precision.</p>
@@ -267,7 +247,8 @@ body.light {
     </div>
   </div>
   
-    <div class="card core">
+  
+  <div class="card core">
     <h2>ZeroDNS <span class="rk-badge recommended">RECOMMENDED</span></h2>
     <p>Accelerate browsing and block threats at the DNS level.</p>
     <div class="copy-box">
@@ -275,7 +256,7 @@ body.light {
       <button class="copy-button" onclick="copyToClipboard('coreLiteUrl', this)">Copy URL <span class="tooltip">Copied!</span></button>
     </div>
   </div>
-  
+
 <!-- Instructions -->
 
 <section class="card instructions">
@@ -285,7 +266,7 @@ body.light {
     <li>
       <strong>🌐 uBlock Origin (uBo)</strong><br>
       Settings → Filter Lists → Custom → Paste URL → Update.<br>
-      Recommended: <strong>Disable Cookies/Social/Annoyances.</strong> Add 🔥 ZeroFuss, 🌐 ZeroDNS, and 👻 AdGhost.<br>
+      Recommended: <strong>Disable EasyList/AdGuard Cookies+Social+Annoyances IF enabled.</strong> Add 🔥 ZeroFuss + 🌐 ZeroDNS + 👻 AdGhost.<br>
     </li>
 
     <li>
@@ -319,7 +300,7 @@ body.light {
   <!-- About Me -->
   <section class="card about">
     <div class="about-text">
-      <h2>👋 RK</h2>
+      <h2>👋 Rimon Hossain</h2>
       <p>A curious mind wired for tweaking, testing, and turning “what ifs” into “oh, that works.” Runs on caffeine, logic, and just the right amount of chaos. If it has settings — it will be customized.</p>
     </div>
   </section>
@@ -333,13 +314,15 @@ body.light {
 </main>
 
 <footer>
-  <p>© 2025 RK | MIT License | Built with ☕, Chaos & Cosmic Coincidence ✨</p>
+  <p>© 2025 Rimon Hossain | MIT License | Built with ☕, Chaos & Cosmic Coincidence ✨</p>
 </footer>
 
 <script>
-function copyToClipboard(input, btn) {
-  let value = typeof input === 'string' ? document.getElementById(input).value : input.value;
-  navigator.clipboard.writeText(value).then(() => {
+function copyToClipboard(inputId, btn) {
+  const input = document.getElementById(inputId);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value).then(() => {
     const tooltip = btn.querySelector('.tooltip');
     tooltip.classList.add('show');
     setTimeout(() => tooltip.classList.remove('show'), 1500);
